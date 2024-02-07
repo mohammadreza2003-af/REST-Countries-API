@@ -9,13 +9,15 @@ function CountryDetail() {
   const router = useRouter();
   const { countryId }: any = useParams();
   const [currentCountry, setCurrentCountry] = useState<Country[]>([]);
-
+  const tempId = countryId.includes("%20")
+    ? countryId.split("%20").join(" ")
+    : countryId;
   const URL_NAME = useMemo(
-    () => `https://restcountries.com/v3.1/name/${countryId}`,
+    () => `https://restcountries.com/v3.1/name/${tempId}`,
 
-    [countryId]
+    [tempId]
   );
-
+  console.log(tempId);
   const handleBack = () => {
     router.back();
   };
@@ -36,7 +38,7 @@ function CountryDetail() {
   }, [URL_NAME]);
 
   const tempData = currentCountry?.filter(
-    (cur) => cur.name.common.toLowerCase() === countryId.toLowerCase()
+    (cur) => cur.name.common.toLowerCase() === tempId.toLowerCase()
   )[0];
 
   return (

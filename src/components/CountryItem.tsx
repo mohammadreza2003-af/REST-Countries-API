@@ -15,7 +15,7 @@ function CountryItem() {
         return (
           <div
             key={country.name.common}
-            className="shadow-xl grid grid-rows-2 h-[340px] max-w-[320px] rounded-lg overflow-hidden"
+            className="shadow-xl grid grid-rows-2 h-[340px] max-w-[320px] rounded-lg overflow-hidden cursor-pointer"
             onClick={() => handleDetailCountry(country)}
           >
             <div>
